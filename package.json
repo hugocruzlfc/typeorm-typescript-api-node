@@ -4,6 +4,9 @@
   "description": "Api de Nodejs con typescript y typeorm",
   "main": "index.js",
   "scripts": {
+    "start": "tsc && node dist/server.js",
+    "start:devdev": "tsc && concurrently \"tsc -w\" \"nodemon dist/index.js\"",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hugo Cruz",
