@@ -1,8 +1,8 @@
 ## Install Dependencies
 
 ```bash
-   yarn add class-validator cors express morgan mysql typeorm typeorm-naming-strategies typescript
-   yarn add @types/cors @types/express @types/morgan concurrently nodemon --dev
+   yarn add class-validator cors express morgan mysql typeorm typeorm-naming-strategies typescript dotenv
+   yarn add @types/cors @types/express @types/morgan concurrently nodemon cross-env--dev
 
 ```
 

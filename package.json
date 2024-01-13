@@ -4,9 +4,9 @@
   "description": "Api de Nodejs con typescript y typeorm",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/server.js",
-    "start:dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
-    "build": "tsc",
+    "start": "tsc && node dist/src/server.js",
+    "start:dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/src/server.js\"",
+    "start:prod": "cross-env NODE_ENV=production node dist/src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hugo Cruz",
@@ -14,6 +14,8 @@
   "dependencies": {
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
