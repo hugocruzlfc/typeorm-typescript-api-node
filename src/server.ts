@@ -2,7 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import { UserRouter } from "./router";
-import { ConfigServer } from "../utils";
+import { ConfigServer } from "./libs";
+import { DataSource, createConnection } from "typeorm";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
@@ -14,12 +15,22 @@ class ServerBootstrap extends ConfigServer {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(morgan("dev"));
     this.app.use(cors());
+    this.dbConnect();
     this.app.use("/api", this.routers());
     this.listen();
 
     this.app.get("/", (req, res) => {
       res.send("Welcome to this API REST made with Node.js and TypeScript 🚀");
     });
+  }
+
+  async dbConnect(): Promise<void> {
+    try {
+      const initConnection = await this.typeORMConfig.initialize();
+      if (initConnection.isInitialized) console.log("Database connected ⚙️");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   public listen() {

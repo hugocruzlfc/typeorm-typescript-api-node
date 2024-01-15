@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node dist/src/server.js",
-    "start:dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/src/server.js\"",
-    "start:prod": "cross-env NODE_ENV=production node dist/src/server.js",
+    "start:dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
+    "start:prod": "cross-env NODE_ENV=production node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hugo Cruz",
@@ -18,7 +18,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
+    "mysql2": "^3.7.0",
     "typeorm": "^0.3.19",
     "typeorm-naming-strategies": "^4.1.0",
     "typescript": "^5.3.3"
