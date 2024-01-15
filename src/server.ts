@@ -1,9 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { UserRouter } from "./router";
 import { ConfigServer } from "./libs";
-import { DataSource, createConnection } from "typeorm";
+import { UserRouter } from "./user";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
