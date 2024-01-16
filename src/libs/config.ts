@@ -48,4 +48,8 @@ export abstract class ConfigServer {
 
     return MysqlDataSource;
   }
+
+  async dbConnect(): Promise<DataSource> {
+    return this.typeORMConfig.initialize();
+  }
 }

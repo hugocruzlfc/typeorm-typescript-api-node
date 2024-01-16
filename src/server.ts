@@ -14,22 +14,15 @@ class ServerBootstrap extends ConfigServer {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(morgan("dev"));
     this.app.use(cors());
-    this.dbConnect();
+    this.dbConnect()
+      .then(() => console.log("Database connected ⚙️"))
+      .catch((error) => console.log(error));
     this.app.use("/api", this.routers());
     this.listen();
 
     this.app.get("/", (req, res) => {
       res.send("Welcome to this API REST made with Node.js and TypeScript 🚀");
     });
-  }
-
-  async dbConnect(): Promise<void> {
-    try {
-      const initConnection = await this.typeORMConfig.initialize();
-      if (initConnection.isInitialized) console.log("Database connected ⚙️");
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   public listen() {
