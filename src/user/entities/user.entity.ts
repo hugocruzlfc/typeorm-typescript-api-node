@@ -1,10 +1,10 @@
 import { Column, Entity, OneToOne } from "typeorm";
 import { BaseEntity } from "../../libs";
-import { Customer } from "../../customer";
+import { CustomerEntity } from "../../customer";
 import { Exclude } from "class-transformer";
 
 @Entity({ name: "users" })
-export class User extends BaseEntity {
+export class UserEntity extends BaseEntity {
   @Column()
   username!: string;
 
@@ -27,6 +27,6 @@ export class User extends BaseEntity {
   @Column()
   province!: string;
 
-  @OneToOne(() => Customer, (customer) => customer.user)
-  customer!: Customer;
+  @OneToOne(() => CustomerEntity, (customer) => customer.user)
+  customer!: CustomerEntity;
 }

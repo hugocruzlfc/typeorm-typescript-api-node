@@ -1,7 +1,7 @@
 import { UserController } from "./controllers";
-import { BaseRoute } from "../shared";
+import { BaseRouter } from "../shared";
 
-export class UserRouter extends BaseRoute<UserController> {
+export class UserRouter extends BaseRouter<UserController> {
   constructor() {
     super(UserController);
   }

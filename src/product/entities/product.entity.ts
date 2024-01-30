@@ -1,10 +1,10 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { BaseEntity } from "../../libs";
-import { Category } from "../../category";
-import { PurchaseProduct } from "../../purchase";
+import { CategoryEntity } from "../../category";
+import { PurchaseProductEntity } from "../../purchase";
 
 @Entity({ name: "products" })
-export class Product extends BaseEntity {
+export class ProductEntity extends BaseEntity {
   @Column()
   productName!: string;
 
@@ -14,13 +14,13 @@ export class Product extends BaseEntity {
   @Column()
   price!: number;
 
-  @ManyToOne(() => Category, (category) => category.products)
+  @ManyToOne(() => CategoryEntity, (category) => category.products)
   @JoinColumn({ name: "category_id" })
-  category!: Category;
+  category!: CategoryEntity;
 
   @OneToMany(
-    () => PurchaseProduct,
+    () => PurchaseProductEntity,
     (purchaseProduct) => purchaseProduct.product
   )
-  purchaseProduct!: PurchaseProduct[];
+  purchaseProduct!: PurchaseProductEntity[];
 }

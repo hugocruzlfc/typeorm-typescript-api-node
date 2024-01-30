@@ -7,24 +7,24 @@ import {
   OneToOne,
 } from "typeorm";
 import { BaseEntity } from "../../libs";
-import { Customer } from "../../customer";
-import { PurchaseProduct } from "./purchases-products.entity";
+import { CustomerEntity } from "../../customer";
+import { PurchaseProductEntity } from "./purchases-products.entity";
 
 @Entity({ name: "purchases" })
-export class Purchase extends BaseEntity {
+export class PurchaseEntity extends BaseEntity {
   @Column()
   status!: string;
 
   @Column()
   paymentMethod!: string;
 
-  @ManyToOne(() => Customer, (customer) => customer.purchases)
+  @ManyToOne(() => CustomerEntity, (customer) => customer.purchases)
   @JoinColumn({ name: "customer_id" })
-  customer!: Customer;
+  customer!: CustomerEntity;
 
   @OneToMany(
-    () => PurchaseProduct,
-    (purchaseProduct) => purchaseProduct.product
+    () => PurchaseProductEntity,
+    (purchaseProduct) => purchaseProduct.purchase
   )
-  purchaseProduct!: PurchaseProduct[];
+  purchaseProduct!: PurchaseProductEntity[];
 }

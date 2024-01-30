@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-export class BaseRoute<T> {
+export class BaseRouter<T> {
   public router: Router;
   public controller: T;
   // public middleware: U

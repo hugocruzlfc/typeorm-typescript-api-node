@@ -1,1 +1,5 @@
-export * from "./entities/product.entity";
+export * from "./controllers";
+export * from "./dto";
+export * from "./entities";
+export * from "./product.router";
+export * from "./services";
