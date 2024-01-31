@@ -2,22 +2,22 @@ import { DeleteResult, UpdateResult } from "typeorm";
 import { BaseService } from "../../libs";
 import { UserDTO } from "../dto/user.dto";
 
-import { User } from "../entities/user.entity";
+import { UserEntity } from "../entities/user.entity";
 
-export class UserService extends BaseService<User> {
+export class UserService extends BaseService<UserEntity> {
   constructor() {
-    super(User);
+    super(UserEntity);
   }
 
-  async findAllUser(): Promise<User[]> {
+  async findAllUser(): Promise<UserEntity[]> {
     return (await this.execRepository).find();
   }
 
-  async findUserById(id: string): Promise<User | null> {
+  async findUserById(id: string): Promise<UserEntity | null> {
     return (await this.execRepository).findOne({ where: { id } });
   }
 
-  async createUser(body: UserDTO): Promise<User> {
+  async createUser(body: UserDTO): Promise<UserEntity> {
     return (await this.execRepository).save(body);
   }
 
