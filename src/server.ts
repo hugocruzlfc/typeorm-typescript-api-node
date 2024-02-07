@@ -1,4 +1,5 @@
 import express from "express";
+import { DataSource } from "typeorm";
 import morgan from "morgan";
 import cors from "cors";
 import { ConfigServer } from "./libs";
@@ -14,9 +15,8 @@ class ServerBootstrap extends ConfigServer {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(morgan("dev"));
     this.app.use(cors());
-    this.dbConnect()
-      .then(() => console.log("Database connected ⚙️"))
-      .catch((error) => console.log(error));
+    this.dbConnect();
+
     this.app.use("/api", this.routers());
     this.listen();
 
@@ -34,6 +34,12 @@ class ServerBootstrap extends ConfigServer {
   routers(): Array<express.Router> {
     const routes: Array<express.Router> = [new UserRouter().router];
     return routes;
+  }
+
+  async dbConnect(): Promise<DataSource | void> {
+    return this.initConnect
+      .then(() => console.log("Database connected ⚙️"))
+      .catch((error) => console.log(error));
   }
 }
 
