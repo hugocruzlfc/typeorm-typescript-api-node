@@ -1,9 +1,14 @@
+import "reflect-metadata";
 import express from "express";
 import { DataSource } from "typeorm";
 import morgan from "morgan";
 import cors from "cors";
 import { ConfigServer } from "./libs";
 import { UserRouter } from "./user";
+import { PurchaseProductRouter, PurchaseRouter } from "./purchase";
+import { ProductRouter } from "./product";
+import { CustomerRouter } from "./customer";
+import { CategoryRouter } from "./category";
 
 class ServerBootstrap extends ConfigServer {
   public app: express.Application = express();
@@ -32,8 +37,14 @@ class ServerBootstrap extends ConfigServer {
   }
 
   routers(): Array<express.Router> {
-    const routes: Array<express.Router> = [new UserRouter().router];
-    return routes;
+    return [
+      new UserRouter().router,
+      new PurchaseRouter().router,
+      new ProductRouter().router,
+      new CustomerRouter().router,
+      new CategoryRouter().router,
+      new PurchaseProductRouter().router,
+    ];
   }
 
   async dbConnect(): Promise<DataSource | void> {
