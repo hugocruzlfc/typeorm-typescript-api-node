@@ -11,3 +11,10 @@
 ```bash
    yarn tsc --init
 ```
+
+## Create migration init
+
+```bash
+   yarn run migration:gen -- src/migrations/init-db
+   yarn run migration:run
+```

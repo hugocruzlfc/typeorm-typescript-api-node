@@ -1,5 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString } from "class-validator";
 import { BaseDTO } from "../../libs";
+import { RoleType } from "../../types";
 
 export class UserDTO extends BaseDTO {
   @IsString()
@@ -25,4 +26,7 @@ export class UserDTO extends BaseDTO {
   @IsString()
   @IsNotEmpty()
   province!: string;
+
+  @IsNotEmpty()
+  role!: RoleType;
 }

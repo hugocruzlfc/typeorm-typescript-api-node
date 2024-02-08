@@ -11,7 +11,7 @@ export class PurchaseProductEntity extends BaseEntity {
   @Column()
   totalPrice!: number;
 
-  @ManyToOne(() => ProductEntity, (purchase) => purchase.purchaseProduct)
+  @ManyToOne(() => PurchaseEntity, (purchase) => purchase.purchaseProduct)
   @JoinColumn({ name: "purchase_id" })
   purchase!: PurchaseEntity;
 
